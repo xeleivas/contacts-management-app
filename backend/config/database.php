@@ -148,4 +148,7 @@ return [
 
     ],
 
+    'seeding' => [
+        'test-users-password' => env('TEST_USERS_PASSWORD', 'password')
+    ]
 ];
