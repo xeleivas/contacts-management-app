@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
+
+/**
+ * Contacts Routes
+ */
+Route::get('/contacts', [ContactController::class, 'list'])->middleware('auth:sanctum');
+Route::post('/contacts/create', [ContactController::class, 'store'])->middleware('auth:sanctum');
+Route::put('/contacts/{id}', [ContactController::class, 'update'])->middleware('auth:sanctum');
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->middleware('auth:sanctum');
