@@ -4,6 +4,12 @@ use App\Models\User;
 
 class AuthService
 {
+
+    /**
+     * This service doesn't includes try catch blocks due to the exceptions handling being done in the controller.
+     * This is due to the simplicity of the project, and to avoid unnecessary and/or duplicated code.
+     */
+
     /**
      * This function handles the login process.
      *
@@ -12,25 +18,19 @@ class AuthService
      */
     public function login($credentials)
     {
-        try {
-            if (!Auth::attempt($credentials)) {
-                return response()->json([
-                    'message' => 'Unauthorized'
-                ], 401);
-            }
-
-            $user = User::where('email', $credentials['email'])->first();
-
+        if (!Auth::attempt($credentials)) {
             return response()->json([
-                'user' => $user,
-                'token' => $user->createToken('authToken')->plainTextToken,
-                'message' => 'Successfully logged in',
-            ], 200);
-        } catch (Throwable $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], 500);
+                'message' => 'Unauthorized'
+            ], 401);
         }
+
+        $user = User::where('email', $credentials['email'])->first();
+
+        return response()->json([
+            'user' => $user,
+            'token' => $user->createToken('authToken')->plainTextToken,
+            'message' => 'Successfully logged in',
+        ], 200);
     }
 
     /**
@@ -40,14 +40,8 @@ class AuthService
      */
     public function logout(User $request)
     {
-        try {
-            $request->user()->tokens()->delete();
+        $request->user()->tokens()->delete();
 
-            return response()->json(['message' => 'Successfully logged out'], 200);
-        } catch (Throwable $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json(['message' => 'Successfully logged out'], 200);
     }
 }
