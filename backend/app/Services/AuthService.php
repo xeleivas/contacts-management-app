@@ -38,7 +38,8 @@ class AuthService
     }
 
     /**
-     * Logout The User
+     * This function handles the logout process.
+     *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
