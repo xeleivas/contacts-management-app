@@ -1,6 +1,10 @@
 <?php
 
+namespace App\Services;
+
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class AuthService
 {
@@ -38,7 +42,7 @@ class AuthService
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function logout(User $request)
+    public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
 

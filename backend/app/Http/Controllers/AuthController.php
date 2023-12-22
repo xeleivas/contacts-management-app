@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Services\AuthService;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class AuthController extends Controller
     /**
      * Login The User
      * @param Request $request
-     * @return User
+     * @return Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
@@ -43,7 +43,7 @@ class AuthController extends Controller
     /**
      * Logout The User
      * @param Request $request
-     * @return User
+     * @return Illuminate\Http\JsonResponse
      */
     public function logout(Request $request)
     {
