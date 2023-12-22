@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         * The password is the same for all test users.
         */
 
-        $password = config('seeding.test-users-password');
+        $password = config('database.seeding.test-users-password');
 
         User::factory()->create([
             'name' => 'Test User 1',
