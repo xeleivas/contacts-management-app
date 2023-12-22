@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Contact;
-use Exception;
 
 class ContactService
 {
@@ -49,7 +48,7 @@ class ContactService
 
         if (!$contact) {
             // If the user is not the owner, they don't need to know if the contact exists or not.
-            throw new Exception('Contact not found');
+            abort(404, 'Contact not found');
         }
 
         return $contact->update($data);
@@ -67,7 +66,7 @@ class ContactService
 
         if (!$contact) {
             // If the user is not the owner, they don't need to know if the contact exists or not.
-            throw new Exception('Contact not found');
+            abort(404, 'Contact not found');
         }
 
         return $contact->delete();
