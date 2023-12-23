@@ -1,5 +1,6 @@
 <script>
 	import SearchBar from '$lib/components/elements/SearchBar.svelte';
+	import ContactCard from '$lib/components/contacts/ContactCard.svelte';
 	import Button from '$lib/components/elements/Button.svelte';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -30,6 +31,7 @@
 	// Hooks
 	onMount(async () => {
 		await getContacts();
+		filteredContacts = filterContacts();
 	});
 
 	$: searchText, (filteredContacts = filterContacts());
@@ -40,13 +42,15 @@
 </svelte:head>
 
 {#if $isLoggedIn}
-	<div class="w-11/12 flex flex-col items-start min-h-screen">
-		<h1 class="mt-24 mb-9 text-blue-950 font-black">Contacts</h1>
-		<SearchBar bind:value={searchText} />
+	<div class="w-full flex flex-col items-start relative min-h-[95vh]">
+		<div class="w-11/12 mx-auto">
+			<h1 class="mt-24 mb-4 text-custom-title font-black md:mb-9">Contacts</h1>
+			<SearchBar bind:value={searchText} />
+		</div>
 
 		{#if $contacts.length === 0}
 			<!-- Not found section -->
-			<div class="w-full flex flex-col justify-center items-center mt-24 md:mt-32">
+			<div class="w-11/12 flex flex-col justify-center items-center mt-24 md:mt-32">
 				<div class="w-48 h-48 relative">
 					<img src="img/circle.svg" class="w-full h-full absolute inset-0 m-auto" alt="Circle" />
 					<img
@@ -61,20 +65,22 @@
 				</p>
 			</div>
 		{:else}
-			{#each filteredContacts as contact}
-				<div class="flex flex-col justify-center items-center gap-y-5">
-					<p>{contact.name}</p>
-					<p>{contact.email}</p>
-					<p>{contact.phone_number}</p>
-				</div>
-			{/each}
+			<div
+				class="w-full flex flex-wrap justify-start mt-8 mb-24 mx-auto md:w-9/12 md:mt-16 md:mb-0"
+			>
+				{#each filteredContacts as contact, index}
+					<div class="w-full md:w-1/3 md:p-2">
+						<ContactCard {contact} noBackground={index % 2 !== 0} />
+					</div>
+				{/each}
+			</div>
 		{/if}
 
 		<!-- Button section -->
 		<div class="w-full hidden md:flex justify-center mt-9">
 			<Button type="button" text="Add new contacts" onClick={addNewContact} />
 		</div>
-		<div class="fixed bottom-0 right-0 mb-11 mr-8 md:hidden flex justify-center">
+		<div class="absolute bottom-0 right-0 mr-8 flex justify-center md:hidden">
 			<button on:click={addNewContact}>
 				<img src="img/plus-icon.svg" alt="Add new contact" />
 			</button>

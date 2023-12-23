@@ -17,12 +17,12 @@
 	});
 </script>
 
-<div class="w-screen h-screen">
+<div class="w-screen h-full bg-custom-background">
 	<!-- Desktop navbar -->
 	<div class="h-24 bg-custom-pink hidden md:flex p-4"></div>
 	<!-- Slot section -->
 	<div class="flex justify-center items-center">
-		<div class="w-full min-h-screen flex flex-col items-center">
+		<div class="w-full min-h-screen flex flex-col items-center mb-10">
 			<slot />
 		</div>
 	</div>

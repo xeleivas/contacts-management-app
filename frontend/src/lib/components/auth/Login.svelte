@@ -38,7 +38,7 @@
 	};
 </script>
 
-<h1 class="mt-44 mb-12 text-blue-950 font-black">Welcome</h1>
+<h1 class="mt-44 mb-12 text-custom-title font-black">Welcome</h1>
 <form
 	class="w-11/12 md:w-full max-w-lg flex flex-col justify-center items-center gap-y-5"
 	on:submit|preventDefault={onSubmit}
