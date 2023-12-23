@@ -26,7 +26,7 @@
 					<h5 class="text-xl font-bold text-custom-title truncate">
 						{truncate(contact.name, 30)}
 					</h5>
-					<img class="absolute right-0 mr-5 mt-5 md:mt-0" src="img/arrow.svg" alt="Arrow" />
+					<img class="absolute right-0 mr-5 mt-5 md:mt-0" src="img/arrow-right.svg" alt="Arrow" />
 				</div>
 				<p class="text-xs text-custom-text truncate">
 					{truncate(contact.address, 30)}

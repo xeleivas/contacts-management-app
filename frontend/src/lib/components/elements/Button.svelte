@@ -6,7 +6,7 @@
 </script>
 
 <button
-	class="w-64 h-14 bg-custom-purple text-white text-lg font-medium rounded-button"
+	class="w-full h-14 bg-custom-purple text-white text-lg font-medium rounded-button"
 	class:uppercase
 	{type}
 	on:click={onClick}

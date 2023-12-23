@@ -12,7 +12,8 @@ export default {
 				'custom-text': '#99879D',
 				'custom-background': '#FAF9FE',
 				'custom-pink': '#FBEEFF',
-				'custom-purple': '#9378FF'
+				'custom-purple': '#9378FF',
+				'custom-gray': '#EBEBEB'
 			},
 			borderRadius: {
 				button: '60px'

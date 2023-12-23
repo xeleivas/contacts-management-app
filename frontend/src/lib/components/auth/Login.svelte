@@ -60,7 +60,7 @@
 	/>
 
 	<!-- Submit button section -->
-	<div class="mt-8">
+	<div class="w-64 mt-8">
 		<Button type="submit" text="Login" uppercase />
 	</div>
 </form>

@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { isLoggedIn } from '$lib/stores/auth';
-	import { contacts, getContacts } from '$lib/stores/contacts';
+	import { contacts, fetchContacts } from '$lib/stores/contacts';
 
 	let searchText = '';
 	let filteredContacts = [];
@@ -25,12 +25,12 @@
 	};
 
 	const addNewContact = async () => {
-		goto('/create');
+		goto('/contact/create');
 	};
 
 	// Hooks
 	onMount(async () => {
-		await getContacts();
+		await fetchContacts();
 		filteredContacts = filterContacts();
 	});
 
@@ -78,7 +78,9 @@
 
 		<!-- Button section -->
 		<div class="w-full hidden md:flex justify-center mt-9">
-			<Button type="button" text="Add new contacts" onClick={addNewContact} />
+			<div class="w-64">
+				<Button type="button" text="Add new contacts" onClick={addNewContact} />
+			</div>
 		</div>
 		<div class="absolute bottom-0 right-0 mr-8 flex justify-center md:hidden">
 			<button on:click={addNewContact}>

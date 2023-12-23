@@ -5,6 +5,10 @@
 	import { page } from '$app/stores';
 	import { isLoggedIn, checkAuth } from '$lib/stores/auth';
 
+	let hideBackButton = true;
+
+	$: $page.url.pathname, (hideBackButton = ['/', '/login'].includes($page.url.pathname));
+
 	onMount(async () => {
 		// If the user is already logged in we don't need to check this
 		if ($isLoggedIn) return;
@@ -18,8 +22,15 @@
 </script>
 
 <div class="w-screen h-full bg-custom-background">
-	<!-- Desktop navbar -->
-	<div class="h-24 bg-custom-pink hidden md:flex p-4"></div>
+	<!-- Navbar -->
+	<div
+		class="h-14 flex justify-start items-end bg-custom-background md:h-24 md:items-center md:bg-custom-pink md:p-4"
+	>
+		<a class="flex justify-center items-center ml-4 md:ml-0" class:hidden={hideBackButton} href="/">
+			<img src="/img/back-arrow.svg" class="w-4 h-4" alt="Back" />
+			<span class="ml-2 text-custom-text text-lg font-semibold">Back</span>
+		</a>
+	</div>
 	<!-- Slot section -->
 	<div class="flex justify-center items-center">
 		<div class="w-full min-h-screen flex flex-col items-center mb-10">
