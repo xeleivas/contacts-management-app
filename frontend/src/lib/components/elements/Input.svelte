@@ -13,7 +13,7 @@
 	{/if}
 	<!-- {...{ type }} is a workaround to avoid having to create multiple inputs due to certain issues with type being dynamic -->
 	<input
-		class="w-full h-14 text-custom-text bg-custom-pink text-base rounded-lg block px-6"
+		class="w-full h-14 text-custom-text bg-custom-pink text-base rounded-lg block px-6 line-clamp-2"
 		bind:value
 		{...{ type }}
 		{placeholder}

@@ -22,7 +22,7 @@
 			>
 				{#if showEditButton}
 					<div class="w-32 mr-6 mb-6 hidden md:block">
-						<Button text="Edit" uppercase onClick={goToEdit} />
+						<Button type="button" text="Edit" uppercase onClick={goToEdit} />
 					</div>
 				{/if}
 			</div>
