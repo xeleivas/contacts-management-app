@@ -16,9 +16,6 @@ export default {
 			borderRadius: {
 				button: '60px'
 			}
-			// borderWidth: {
-			// 	'custom-border': '1px'
-			// }
 		}
 	},
 	plugins: []

@@ -38,28 +38,29 @@
 	};
 </script>
 
-<div class="flex flex-col items-center min-h-screen">
-	<h1 class="mt-44 mb-12 text-blue-950 font-black">Welcome</h1>
-	<form
-		class="w-full max-w-lg flex flex-col justify-center items-center gap-y-5"
-		on:submit|preventDefault={onSubmit}
-	>
-		{#if formData?.errors?.length}
-			<ul class="font-medium tracking-wide text-red-500 text-sm">
-				{#each formData.errors as error}
-					<li>{error.message}</li>
-				{/each}
-			</ul>
-		{/if}
+<h1 class="mt-44 mb-12 text-blue-950 font-black">Welcome</h1>
+<form
+	class="w-11/12 md:w-full max-w-lg flex flex-col justify-center items-center gap-y-5"
+	on:submit|preventDefault={onSubmit}
+>
+	{#if formData?.errors?.length}
+		<ul class="flex flex-col justify-center font-medium tracking-wide text-red-500 text-sm">
+			{#each formData.errors as error}
+				<li class="mx-auto">{error.message}</li>
+			{/each}
+		</ul>
+	{/if}
 
-		<Input label="Email" type="text" placeholder="jhon@doe.com" bind:value={formData.email} />
-		<Input
-			label="Password"
-			type="password"
-			placeholder="**************"
-			bind:value={formData.password}
-		/>
+	<Input label="Email" type="text" placeholder="jhon@doe.com" bind:value={formData.email} />
+	<Input
+		label="Password"
+		type="password"
+		placeholder="**************"
+		bind:value={formData.password}
+	/>
 
-		<Button type="submit" text="Login" />
-	</form>
-</div>
+	<!-- Submit button section -->
+	<div class="mt-8">
+		<Button type="submit" text="Login" uppercase />
+	</div>
+</form>
