@@ -3,5 +3,25 @@
 @tailwind utilities;
 
 h1 {
-    @apply text-4xl font-bold text-custom-title;
+	@apply text-4xl font-bold text-custom-title;
+}
+
+/* Styles for Google Places Api */
+.pac-container,
+.pac-item,
+.pac-item-query,
+.pac-matched {
+	@apply font-sans font-normal text-base text-custom-text bg-custom-pink hover:bg-custom-pink;
+}
+
+.pac-item {
+	@apply h-14 flex flex-col line-clamp-1;
+}
+
+.pac-matched {
+	@apply text-custom-label;
+}
+
+.pac-icon {
+	@apply hidden;
 }

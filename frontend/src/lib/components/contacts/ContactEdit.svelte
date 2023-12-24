@@ -1,6 +1,7 @@
 <script>
 	import Input from '$lib/components/elements/Input.svelte';
 	import Button from '$lib/components/elements/Button.svelte';
+	import AddressDropdown from '$lib/components/elements/AddressDropdown.svelte';
 	import ErrorsDisplay from '$lib/components/elements/ErrorsDisplay.svelte';
 	import { z } from 'zod';
 	import { goto } from '$app/navigation';
@@ -75,7 +76,7 @@
 				<Input label="Profile Picture" bind:value={contact.profile_picture_url} />
 			</div>
 			<div class="w-full order-3 md:w-80 md:order-5">
-				<Input label="Address" bind:value={contact.address} />
+				<AddressDropdown bind:value={contact.address} />
 			</div>
 			<div class="w-full order-4 md:w-80 md:order-2">
 				<Input label="Phone" bind:value={contact.phone_number} />
