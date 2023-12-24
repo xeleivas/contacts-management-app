@@ -50,7 +50,7 @@
 
 		{#if $contacts.length === 0}
 			<!-- Not found section -->
-			<div class="w-11/12 flex flex-col justify-center items-center mt-24 md:mt-32">
+			<div class="w-full flex flex-col justify-center items-center mt-24 md:mt-32">
 				<div class="w-48 h-48 relative">
 					<img src="img/circle.svg" class="w-full h-full absolute inset-0 m-auto" alt="Circle" />
 					<img
@@ -82,7 +82,7 @@
 				<Button type="button" text="Add new contacts" onClick={addNewContact} />
 			</div>
 		</div>
-		<div class="absolute bottom-0 right-0 mr-8 flex justify-center md:hidden">
+		<div class="absolute bottom-10 right-0 mr-8 flex justify-center md:hidden">
 			<button on:click={addNewContact}>
 				<img src="img/plus-icon.svg" alt="Add new contact" />
 			</button>
