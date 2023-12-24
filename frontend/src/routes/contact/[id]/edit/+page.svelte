@@ -1,5 +1,6 @@
 <script>
 	import ContactProfileBanner from '$lib/components/contacts/ContactProfileBanner.svelte';
+	import ContactEdit from '$lib/components/contacts/ContactEdit.svelte';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -11,7 +12,6 @@
 	onMount(async () => {
 		await fetchContacts();
 		contact = getContact(contactId);
-		console.log({ contact });
 		if (!contact) goto('/');
 	});
 </script>
@@ -26,6 +26,10 @@
 			picture={contact.profile_picture_url}
 			name={contact.name}
 			contactId={contact.id}
+			hideMobile
 		/>
+
+		<!-- Edit section -->
+		<ContactEdit {contact} />
 	</div>
 {/if}

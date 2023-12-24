@@ -1,10 +1,6 @@
 <script>
 	export let contact = {};
 	export let noBackground = false;
-
-	const truncate = (string, length) => {
-		return string.length > length ? string.substring(0, length - 3) + '...' : string;
-	};
 </script>
 
 <div
@@ -23,13 +19,13 @@
 			/>
 			<div class="w-full flex flex-col gap-0.5">
 				<div class="flex items-center justify-between">
-					<h5 class="text-xl font-bold text-custom-title truncate">
-						{truncate(contact.name, 30)}
+					<h5 class="text-xl font-bold text-custom-title line-clamp-1">
+						{contact.name}
 					</h5>
 					<img class="absolute right-0 mr-5 mt-5 md:mt-0" src="img/arrow-right.svg" alt="Arrow" />
 				</div>
-				<p class="text-xs text-custom-text truncate">
-					{truncate(contact.address, 30)}
+				<p class="text-xs text-custom-text line-clamp-1">
+					{contact.address}
 				</p>
 			</div>
 		</div>

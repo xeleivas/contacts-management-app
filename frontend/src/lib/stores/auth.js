@@ -1,5 +1,5 @@
 import { writable, derived } from 'svelte/store';
-import authService from '../services/authService';
+import authService from '$lib/services/authService';
 
 export const user = writable(null);
 export const isLoggedIn = derived(user, ($user) => !!$user);

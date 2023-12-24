@@ -1,5 +1,5 @@
 import { writable, get } from 'svelte/store';
-import contactsService from '../services/contactsService';
+import contactsService from '$lib/services/contactsService';
 
 export const contacts = writable([]);
 
@@ -31,11 +31,14 @@ export const fetchContacts = async () => {
 /**
  * Create a new contact and reload the contacts from the API
  * @param {Object} contact
+ * @returns {Object} Newly created contact
  */
 export const createContact = async (contact) => {
 	try {
-		await contactsService.createContact(contact);
+		const result = await contactsService.createContact(contact);
 		fetchContacts();
+
+		return result;
 	} catch (error) {
 		console.error(error);
 	}

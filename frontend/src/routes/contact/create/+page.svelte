@@ -2,7 +2,7 @@
 	import ContactProfileBanner from '$lib/components/contacts/ContactProfileBanner.svelte';
 	import ContactEdit from '$lib/components/contacts/ContactEdit.svelte';
 
-	let contact = {};
+	let contact = { name: '', email: '', address: '', phone_number: '', profile_picture_url: '' };
 </script>
 
 <svelte:head>
@@ -15,9 +15,10 @@
 			picture={contact.profile_picture_url}
 			name={contact.name}
 			contactId={contact.id}
+			hideMobile
 		/>
 
 		<!-- Create section -->
-		<ContactEdit create />
+		<ContactEdit create bind:contact />
 	</div>
 {/if}
