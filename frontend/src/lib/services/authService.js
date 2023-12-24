@@ -1,8 +1,6 @@
-import api from './api';
-
 export default {
 	async login(email, password) {
-		const response = await api.post('/api/login', {
+		const response = await window.axiosApi.post('/api/login', {
 			email,
 			password
 		});
@@ -10,12 +8,12 @@ export default {
 	},
 
 	async logout() {
-		const response = await api.post('/api/logout');
+		const response = await window.axiosApi.post('/api/logout');
 		return response.data;
 	},
 
 	async getUser() {
-		const response = await api.get('/api/user');
+		const response = await window.axiosApi.get('/api/user');
 		return response.data;
 	}
 };

@@ -1,5 +1,6 @@
 import { writable, derived } from 'svelte/store';
 import authService from '$lib/services/authService';
+import { initApi } from '$lib/services/api';
 
 export const user = writable(null);
 export const isLoggedIn = derived(user, ($user) => !!$user);
@@ -18,6 +19,8 @@ export const login = async (email, password) => {
 		// We use localStorage to store the accessToken,
 		// just as a simple alternative to cookies due to CORS issues during development
 		localStorage.setItem('accessToken', response.token);
+		// Refresh axios instance, the initial one was created with no token on import time
+		initApi();
 	} catch (error) {
 		console.error(error);
 	}
