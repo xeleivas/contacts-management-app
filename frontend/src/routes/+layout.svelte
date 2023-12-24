@@ -3,11 +3,8 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import config from '$lib/config';
 	import { isLoggedIn, checkAuth } from '$lib/stores/auth';
-
-	let hideBackButton = true;
-
-	$: $page.url.pathname, (hideBackButton = ['/', '/login'].includes($page.url.pathname));
 
 	onMount(async () => {
 		// If the user is already logged in we don't need to check this
@@ -15,10 +12,23 @@
 		// Check if the user is logged in
 		await checkAuth();
 		// If the user is logged in and is trying to access the login page, redirect to the home page
+		if ($isLoggedIn && $page.url.pathname === '/login') goto('/');
 		// If the user is not logged in and is trying to access any page other than the login page, redirect to the login page
 		if (!$isLoggedIn && $page.url.pathname !== '/login') goto('/login');
 	});
 </script>
+
+<svelte:head>
+	<!-- Google Places API -->
+	<script>
+		// Workaround to avoid initialization errors
+		window.initMap = () => ({});
+	</script>
+	<script
+		async
+		src={`https://maps.googleapis.com/maps/api/js?key=${config.placesApiKey}&libraries=places&language=en&callback=initMap`}
+	></script>
+</svelte:head>
 
 <div class="w-screen h-full bg-custom-background">
 	<!-- Navbar -->

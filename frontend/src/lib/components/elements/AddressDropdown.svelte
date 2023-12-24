@@ -1,11 +1,12 @@
 <script>
 	import Input from '$lib/components/elements/Input.svelte';
 	import { onMount } from 'svelte';
-	import config from '$lib/config';
 
 	export let value = '';
 
 	const initMap = () => {
+		if (!google) return;
+
 		const input = document.getElementById('autocomplete');
 		const options = {
 			fields: ['formatted_address'],
@@ -24,17 +25,6 @@
 		initMap();
 	});
 </script>
-
-<svelte:head>
-	<script>
-		// Workaround to avoid initialization errors
-		window.initMap = () => ({});
-	</script>
-	<script
-		async
-		src={`https://maps.googleapis.com/maps/api/js?key=${config.placesApiKey}&libraries=places&language=en&callback=initMap`}
-	></script>
-</svelte:head>
 
 <div class="autocomplete-address">
 	<Input id="autocomplete" label="Address" type="textarea" bind:value />
