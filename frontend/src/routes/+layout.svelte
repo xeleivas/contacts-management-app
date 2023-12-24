@@ -1,5 +1,7 @@
 <script>
 	import '../app.css';
+	import Navbar from '$lib/components/elements/Navbar.svelte';
+
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -32,14 +34,7 @@
 
 <div class="w-screen h-full bg-custom-background">
 	<!-- Navbar -->
-	<div
-		class="h-14 flex justify-start items-end bg-custom-background md:h-24 md:items-center md:bg-custom-pink md:p-4"
-	>
-		<a class="flex justify-center items-center ml-4 md:ml-0" class:hidden={hideBackButton} href="/">
-			<img src="/img/back-arrow.svg" class="w-4 h-4" alt="Back" />
-			<span class="ml-2 text-custom-text text-lg font-semibold">Back</span>
-		</a>
-	</div>
+	<Navbar />
 	<!-- Slot section -->
 	<div class="flex justify-center items-center">
 		<div class="w-full min-h-full flex flex-col items-center md:min-h-screen md:mb-10">

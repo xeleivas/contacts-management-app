@@ -9,6 +9,11 @@ export default {
 		return response.data;
 	},
 
+	async logout() {
+		const response = await api.post('/api/logout');
+		return response.data;
+	},
+
 	async getUser() {
 		const response = await api.get('/api/user');
 		return response.data;
